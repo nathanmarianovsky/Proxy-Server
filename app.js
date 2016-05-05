@@ -26,7 +26,7 @@ fs.readFile("servers.txt", "utf8", (err, data) => {
             var target = servers.shift();
             proxy.web(req, res, {"target": "http:" + url.format(target)});
             servers.push(target);
-        }).listen(8080, () => {
+        }).listen(80, () => {
             console.log("The server is now listening!");
         });
     }
