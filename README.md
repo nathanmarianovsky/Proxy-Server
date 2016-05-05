@@ -29,7 +29,7 @@ for each worker you have, with no restriction on how many workers you can have.
 
 
 # Running the Server
-If you want to change the port of the proxy-server simply change "80" to whatever you want at:
+If you want to change the port of the proxy-server simply change "80" to whatever you want at "app.js":
 ```js
 }).listen(80, () => {
     console.log("The server is now listening!");
