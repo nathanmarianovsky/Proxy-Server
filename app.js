@@ -12,13 +12,15 @@ fs.readFile("servers.txt", "utf8", (err, data) => {
         servers = [],
         wait = collection.length;
     collection.forEach(iter => {
-        var server = iter.split(",");
-        if(server[1].indexOf("\r") !== -1) { server[1] = server[1].substring(0, server[1].indexOf("\r")); }
-        var obj = {
-            "hostname": server[0],
-            "port": server[1]
-        };
-        servers.push(obj);
+        if(iter !== "") {
+            var server = iter.split(",");
+            if(server[1].indexOf("\r") !== -1) { server[1] = server[1].substring(0, server[1].indexOf("\r")); }
+            var obj = {
+                "hostname": server[0],
+                "port": server[1]
+            };
+            servers.push(obj);
+        }
         wait--;
     });
     if(wait == 0) {
