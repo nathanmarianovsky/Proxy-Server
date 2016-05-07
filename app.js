@@ -28,7 +28,7 @@ fs.readFile("servers.txt", "utf8", (err, data) => {
     });
     if(wait == 0) {
         scan(servers);
-        setInterval(() => { console.log("2 sec!", available); scan(servers); }, 1000 * 60);
+        setInterval(() => { scan(servers); }, 1000 * 60);
         http.createServer((req, res) => {
             if(available.length > 0) {
                 var target = available.shift();
