@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
-    "http-proxy": "^1.13.2"
+    "http-proxy": "^1.13.2",
+    "portscanner": "^1.0.0"
   },
   "devDependencies": {},
   "scripts": {
