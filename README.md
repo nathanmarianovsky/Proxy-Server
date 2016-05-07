@@ -19,11 +19,11 @@ This will handle the installation of all node_modules.
 # Purpose of the Server and Setting Up the Workers
 This server is intended to handle the load balancing for a given app that has multiple workers running the same code. In essense you want all of your traffic to hit the proxy server and let it delegate the work among its workers. To provide your workers open the "servers.txt" file and change:
 ```
-hostname1,port1
+ip-address1,port1
 ```
 to
 ```
-mywebsite.com,80
+127.0.0.1,80
 ```
 for each worker you have, with no restriction on how many workers you can have. In the case where a worker dies, the app continues running given there some workers remaining and every set interval the server rechecks the workers. Specifically on the line"
 ```js
