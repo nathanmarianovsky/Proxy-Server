@@ -28,13 +28,11 @@ fs.readFile("servers.txt", "utf8", (err, data) => {
     });
     if(wait == 0) {
         scan(servers);
-        setInterval(() => { console.log("2 sec!", available); scan(servers); }, 1000 * 2);
+        setInterval(() => { console.log("2 sec!", available); scan(servers); }, 1000 * 60);
         http.createServer((req, res) => {
-            console.log(servers, available);
             if(available.length > 0) {
                 var target = available.shift();
                 proxy.web(req, res, {"target": url.format(target)});
-
                 proxy.on("error", (err, req, res) => {
                     scan(servers);
                     if(available.length > 0) {
@@ -43,7 +41,6 @@ fs.readFile("servers.txt", "utf8", (err, data) => {
                     }
                     else { res.end("<body>All of the workers are down it seems!</body>"); }
                 });
-
                 available.push(target);
             }
             else { res.end("<body>All of the workers are down it seems!</body>"); }
