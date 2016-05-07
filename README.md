@@ -25,7 +25,14 @@ to
 ```
 mywebsite.com,80
 ```
-for each worker you have, with no restriction on how many workers you can have.
+for each worker you have, with no restriction on how many workers you can have. In the case where a worker dies, the app continues running given there some workers remaining and every set interval the server rechecks the workers. Specifically on the line"
+```js
+setInterval(() => { scan(servers); }, 1000 * 60);
+```
+you can change "60" to however many seconds you want the server to wait until it rechecks. With "60" seconds, the default wait time is "1" minute. If it happens that all of the workers are dead, the proxy server will respond with:
+```
+All of the workers are down it seems!
+```
 
 
 # Running the Server
