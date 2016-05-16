@@ -44,14 +44,14 @@ mkdirp(__dirname + "/logs", err => {
             });
         });
         log.setLevel("info");
-        log.info("Current scan on ", moment().format("llll"), " shows that ", available.length.toString(), " workers are available out of ", servers.length.toString());
+        log.info("Current scan on ", moment().format("LTS"), " shows that ", available.length.toString(), " workers are available out of ", servers.length.toString());
     };
 
     // Read and parse the servers file to identify all of the workers and start up the proxy server to handle the load balancing
     fs.readFile("servers.txt", "utf8", (err, data) => {
         if(err) { 
             log.setLevel("error");
-            log.info("Error thrown on " + moment().format("llll") + ": " + err.toString());
+            log.info("Error thrown on " + moment().format("LTS") + ": " + err.toString());
             throw err;
         }
         var collection = data.split("\n");
@@ -73,14 +73,14 @@ mkdirp(__dirname + "/logs", err => {
             if(available.length > 0) {
                 var target = available.shift();
                 log.setLevel("info");
-                log.info("Forwarding ", url.parse(req.url).pathname, " on ", moment().format("llll"), " to ", url.format(target));
+                log.info("Forwarding ", url.parse(req.url).pathname, " on ", moment().format("LTS"), " to ", url.format(target));
                 proxy.web(req, res, {"target": url.format(target)});
                 proxy.on("error", (err, req, res) => {
                     scan(servers);
                     if(available.length > 0) {
                         target = available.shift();
                         log.setLevel("info");
-                        log.info("Forwarding " + url.parse(req.url).pathname + " on " + moment().format("llll") + " to " + url.format(target));
+                        log.info("Forwarding " + url.parse(req.url).pathname + " on " + moment().format("LTS") + " to " + url.format(target));
                         proxy.web(req, res, {"target": url.format(target)});
                     }
                     else { 
