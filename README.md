@@ -5,6 +5,7 @@
 
 - [Setting Up](#setting-up)
 - [Purpose of the Server and Setting Up the Workers](#purpose-of-the-server-and-setting-up-the-workers)
+- [Reading the Logs](#reading-the-logs)
 - [Running the Server](#running-the-server)
 
 
@@ -33,6 +34,12 @@ you can change "60" to however many seconds you want the server to wait until it
 ```
 All of the workers are down it seems!
 ```
+
+
+
+# Reading the Logs
+Logs will be created to keep track of server activities and errors. All of the files are named according to date and can be found inside the "/logs" directory.
+
 
 
 # Running the Server
