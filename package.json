@@ -5,7 +5,10 @@
   "main": "app.js",
   "dependencies": {
     "http-proxy": "^1.13.2",
-    "portscanner": "^1.0.0"
+    "mkdirp": "^0.5.1",
+    "moment": "^2.13.0",
+    "portscanner": "^1.0.0",
+    "simple-node-logger": "^0.93.12"
   },
   "devDependencies": {},
   "scripts": {
